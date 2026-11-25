@@ -434,28 +434,6 @@ end
 
 Framework.Configuration.ClientData = GameGlobals.ClientPlrData
 
-local LeaderboardStatistics = {}
-for _, Leaderboard in {
-    { WorkspaceService.Leaderboards.BodyToughnessLeaderBoardPart.SurfaceGui.ScrollingFrame, "BodyToughness" },
-    { WorkspaceService.Leaderboards.FistStrengthLeaderBoardPart.SurfaceGui.ScrollingFrame, "FistStrength" },
-    { WorkspaceService.Leaderboards.TotalPowerLeaderBoardPart.SurfaceGui.ScrollingFrame, "PsychicPower" },
-} do
-    for _, Text in Leaderboard[1]:GetChildren() do
-        local LeaderboardName = string.split(Text.Text, ")  ")
-        if #LeaderboardName >= 2 and LeaderboardName[2] == LocalPlayer.Name then
-            LeaderboardStatistics[Leaderboard[2]] = LeaderboardName[1]
-        end
-    end
-end
-
-local function GetTopStatus()
-    local Parts = {}
-    if LeaderboardStatistics.FistStrength then table.insert(Parts, "FS: " .. LeaderboardStatistics.FistStrength) end
-    if LeaderboardStatistics.BodyToughness then table.insert(Parts, "BT: " .. LeaderboardStatistics.BodyToughness) end
-    if LeaderboardStatistics.PsychicPower then table.insert(Parts, "PP: " .. LeaderboardStatistics.PsychicPower) end
-    return #Parts > 0 and table.concat(Parts, "  ") or nil
-end
-
 local Globals = {
     PlayersData = {
         Esp = {},
@@ -2854,7 +2832,6 @@ Request({
                 { name = "**Body Toughness:**", value = MathUtility:FormatNumber(Framework.Configuration.ClientData.BodyToughness), inline = true },
                 { name = "**Psychic Power:**", value = MathUtility:FormatNumber(Framework.Configuration.ClientData.PsychicPower), inline = true },
                 { name = "**Tokens:**", value = MathUtility:FormatNumber(Framework.Configuration.ClientData.Token), inline = true },
-                (LeaderboardStatistics.FistStrength or LeaderboardStatistics.BodyToughness or LeaderboardStatistics.PsychicPower) and { name = "**In Top:**", value = GetTopStatus(), inline = false } or nil,
             },
             footer = { text = JobIdentifier },
         } },
