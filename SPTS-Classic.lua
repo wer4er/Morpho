@@ -28,9 +28,9 @@ local SupportCheck = getsenv
     and not string.find(InjectorName, "NX")
     and not string.find(InjectorName, "Xeno")
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
-local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/addons/ThemeManager.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/addons/SaveManager.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/joustingmatch/Ouroidian/refs/heads/main/Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/joustingmatch/Ouroidian/refs/heads/main/addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/joustingmatch/Ouroidian/refs/heads/main/addons/SaveManager.lua"))()
 
 local Options = Library.Options
 local Toggles = Library.Toggles
